@@ -1,0 +1,11 @@
+shell script是利用shell的功能所写的"程序"
+
+运行shell程序：
+	1、绝对路径运行shell程序
+		/shell.sh
+	2、相对路径运行shell程序
+		./shell.sh
+	3.使用bash程序运行shell程序
+		bash shell.sh
+	4、使用变量"PATH",将shell程序放到PATH指定的目录
+	

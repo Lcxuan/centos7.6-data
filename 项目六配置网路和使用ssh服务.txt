@@ -1,0 +1,72 @@
+三种形式的主机名：
+	静态的（static）：“静态”主机名也称为内核主机名，是系统在启动时从/etc/hostname自动初始化的主机名
+	瞬态的（transient）：“瞬态”主机名是在系统运行时临时分配的主机名，由内核管理
+	灵活的（pretty）：“灵活”主机名是UTF8格式的自由主机名，以展示给终端用户
+	
+nmtui			修改主机名
+
+hostnamectl		管理主机名
+				hostnamectl status	查看主机名
+				hostname set-hostname newhostname	将主机名设置为newhostname
+
+nmcli			完成都网卡的所有配置
+				nmcli general hostname	查看主机名
+				nmcli general hostname newhostname	将主机名设置为newhostname
+				
+网卡的配置文件：/etc/sysconfig/network-scripts
+
+使用nmcli配置网络
+	nmcli connection show				显示所有连接
+	nmcli connection show --active		显示所有活动的连接状态
+	nmcli connection show "ens33"		显示网络连接配置
+	nmcli device status					显示设备状态
+	nmcli device show ens33				显示网络接口属性
+	nmcli connection add help			查看帮助
+	nmcli connextion reload				重新加载配置
+	nmcli connextion down test2			禁用test2的配置，注意一个网卡可以有多个配置
+	nmcli connection up test2			启用test2的配置
+	nmcli device disconnection ens33	禁用ens33网卡，物理网卡
+	nmcli device connect ens33			启动ens33网卡
+	参数说明：
+		con-name		指定连接名字，没有特殊要求
+		ipv4.methmod	指定获取IP地址的方式
+		ifname			指定网卡设备名，也就是次配置所生效的网卡
+		autoconnect		指定是否自动启动
+		ipv4.addresses	指定IPv4地址
+		gw4				指定网卡
+	
+	nmcli命令和/etc/sysconfig/network-scripts/ifcfg-*文件的对应关系
+	nmcli命令								/etc/sysconfig/network-scripts/ifcfg-*文件
+	ipv4.method manual						BOOTPROTO=none
+	ipv4.method auto						BOOTPROTO=dhcp
+	ipv4.addresses 192.0.2.1/24				IPADDR=192.0.2.1
+											PREFIX=24
+	gw4 192.0.2.254							GATEWAY=192.0.2.254
+	ipv4.dns 8.8.8.8						DNS0=8.8.8.8
+	ipv4.dns-search example.com				DOMAIN=example.com
+	ipv4.ignore-auto-dns true				PEERDNS=no
+	connection.autoconnect yes				ONBOOT=yes
+	connection.id eth0						NAME=eth0
+	connection.interface-name eth0			DEVICE=eth0
+	802-3-ethernet.mac-address...			HWADDR=...
+	
+SSH是一种能够以安全的方式提供远程登录的协议
+	两种验证方法：
+		基于口令的验证——用账户和密码来验证登录
+		基于密钥的验证——需要在本地生成密钥对，然后把密钥对中的公钥上传至服务器，与服务器中的公钥比较
+	配置文件中以"#"开头的都是注释行
+	
+	sshd服务配置文件中包含的参数及其作用
+	参数								作用
+	port 22								默认的sshd服务端口
+	ListenAddress 0.0.0.0				设定sshd服务监听的IP地址
+	Protocol 2							SSH协议的版本号
+	HostKey /etc/ssg/ssh_host_key		SSH协议版本为1时，DES私钥存放的位置
+	HostKey /etc/ssg/ssh_host_rsa_key	SSH协议版本为1时，RSA私钥存放的位置
+	HostKey /etc/ssg/ssh_host_dsa_key	SSH协议版本为1时，DSA私钥存放的位置
+	PermitRootLogin yes					设定是否允许root管理员直接登录
+	StrictModes	yes						当远程用户的私钥改变时直接拒绝连接
+	MaxAuthTries 6						最大密码尝试次数
+	MaxSessions 10						最大终端数
+	PasswordAuthtication yes			是否允许密码验证
+	PermitEmptyPasswords no				是否允许空密码登录（很不安全）
