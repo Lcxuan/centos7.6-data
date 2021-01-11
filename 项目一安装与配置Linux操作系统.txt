@@ -28,12 +28,12 @@ Linux版本：内核版本和发行版本
 常见的硬件设备及其文件名称
 设备						文件名称
 IDE设备						/dev/hd[a-d]
-SCSI/SATA/U盘					/dev/sd[a-p]
+SCSI/SATA/U盘					 /dev/sd[a-p]
 软驱						/dev/fd[0-1]
-打印机						/dev/Ip[0-15]
+打印机					       /dev/Ip[0-15]
 光驱						/dev/cdrom
 鼠标						/dev/mouse
-磁带机						/dev/st0或/dev/ht0
+磁带机					       /dev/st0或/dev/ht0
 一般的硬盘设备都是以"/dev/sd"开头，a~p代表16块不同的硬盘，默认a开始
 硬盘的分区编号：
 	主分区或扩展分区编号都是从1开始，4结束
@@ -46,14 +46,14 @@ SCSI/SATA/U盘					/dev/sd[a-p]
 升级软件的命令格式				rpm -Uvh filename.rpm
 卸载软件的命令格式				rpm -e filename.rpm
 查询软件描述信息的命令格式			    rpm -qpi filename.rpm
-列出软件文件信息的命令格式			    rpm -qpi filename.rpm
+列出软件文件信息的命令格式			    rpm -qpl filename.rpm
 查询文件属于哪个RPM的命令格式		    rpm -qf filename.rpm
 
 常见的yum命令：
 列出所有仓库					yum repolist all
 列出仓库中所有软件包			    yum list all
 查看软件包信息				       yum info 软件包名称
-安装软件包					yum install 软件包名称
+安装软件包					 yum install 软件包名称
 重新安装软件包				       yum reinstall 软件包名称
 升级软件包					 yum update 软件包名称
 移除软件包					 yum remove 软件包名称
