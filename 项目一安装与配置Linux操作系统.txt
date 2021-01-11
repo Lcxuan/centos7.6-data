@@ -1,6 +1,6 @@
 linux系统是一个类UNIX的操作系统
 UNIX操作系统是1969年由K.Thompson和D.M.Richie在美国贝尔实验室开发
-1991年10月5日，Linux系统诞生
+1991年10月5日，Linus Torvalds在赫尔辛基技术大学的一台FTP服务器发布了一个消息，Linux系统诞生
 linux是基于copyleft（无版权）的软件模式
 linux是一个免费、自由、开放的操作系统
 	安全稳定、支持多种硬件平台、用户界面友好、多任务、多用户
