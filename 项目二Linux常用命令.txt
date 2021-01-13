@@ -144,18 +144,18 @@ find	用于文件查找
 		find [路径] [匹配表达式]
 		匹配表达式：
 			-name filename		查找指定名称的文件
-			-user filename		查找属于指定用户的文件
-			-group grpname		查找属于指定组的文件
-			-print				显示查找结果
-			-size n				查找大小为n块的文件
-			-inum n				查找索引节点号为n的文件
-			-type				查找指定类型的文件，文件类型：
-								b（块设备文件）、c（字符设备文件）、d（目录）
-								p（管道文件）、l（符号链接文件）、f（普通文件）
-			-atime n			查找n天前被访问过的文件
-			-ctime n			类似于atime，但检查的是文件内容被修改的时间
-			-perm mode			查找比指定文件新的文件，及最后修改时间离现在较近
-			-newer file			查找比指定文件新的文件，及最后修改时间离现在较近
+			-user username		查找属于指定用户的文件
+			-group groupname	查找属于指定组的文件
+			-print			显示查找结果
+			-size n			查找大小为n块的文件
+			-inum n			查找索引节点号为n的文件
+			-type			查找指定类型的文件，文件类型：
+							b（块设备文件）、c（字符设备文件）、d（目录）
+							p（管道文件）、l（符号链接文件）、f（普通文件）
+			-atime n		查找n天前被访问过的文件
+			-ctime n		类似于atime，但检查的是文件内容被修改的时间
+			-perm mode		查找比指定文件新的文件，及最后修改时间离现在较近
+			-newer file		查找比指定文件新的文件，及最后修改时间离现在较近
 			-exec command {} \;	对匹配指定条件的文件执行command命令
 			-ok command {} \;	与exec相同，但执行command命令时请求用户确认
 			
