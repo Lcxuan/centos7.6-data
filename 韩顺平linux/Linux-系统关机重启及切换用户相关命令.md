@@ -4,7 +4,7 @@
 
 shutdown -h now（立即关机）
 
-shutdown -h n（n为数字，表示1分钟后关机）
+shutdown -h n（n为数字，表示n分钟后关机）
 
 shutdown -r now（立即重启）
 
